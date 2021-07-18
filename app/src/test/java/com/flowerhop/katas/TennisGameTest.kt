@@ -10,13 +10,16 @@ class TennisGameTest {
         val ken = Player("Ken")
         val flower = Player("Flower")
         val game = Game.create(ken, flower)
-        val expectedPlayers = "Ken, Flower"
+        val expectedPlayer1 = ken
+        val expectedPlayer2 = flower
 
         // Act
-        val players = game.getPlayers()
+        val player1 = game.player1
+        val player2 = game.player2
 
         // Assert
-        assertEquals(expectedPlayers, players)
+        assertEquals(expectedPlayer1, player1)
+        assertEquals(expectedPlayer2, player2)
     }
 
     @Test
@@ -42,7 +45,7 @@ class TennisGameTest {
         val expected = "Love, Love"
 
         // Act
-        val scores = newGame.getScores()
+        val scores = "${newGame.player1.score}, ${newGame.player2.score}"
 
         // Assert
         assertEquals(expected, scores)
@@ -58,7 +61,7 @@ class TennisGameTest {
 
         // Act
         game.player1Wins()
-        val scores = game.getScores()
+        val scores = "${game.player1.score}, ${game.player2.score}"
 
         // Assert
         assertEquals(expect, scores)
@@ -75,7 +78,7 @@ class TennisGameTest {
         game.player1Wins()
         game.player2Wins()
         game.player2Wins()
-        val expected = "Ken wins."
+        val expected = ken
 
         // Act
         game.player1Wins()
@@ -96,7 +99,7 @@ class TennisGameTest {
         game.player2Wins()
         game.player2Wins()
         game.player2Wins()
-        val expected = "Flower wins."
+        val expected = flower
 
         // Act
         game.player2Wins()
@@ -145,7 +148,7 @@ class TennisGameTest {
         // Arrange
         val game = createDeuceGame()
         game.player2Wins()
-        val expected = "Flower wins."
+        val expected = game.player2
 
         // Act
         game.player2Wins()

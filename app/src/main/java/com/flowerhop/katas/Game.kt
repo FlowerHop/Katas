@@ -1,6 +1,6 @@
 package com.flowerhop.katas
 
-class Game private constructor(private val player1: Player, private val player2: Player) {
+class Game private constructor(val player1: Player, val player2: Player) {
     companion object {
         fun create(player1: Player, player2: Player): Game {
             return Game(player1, player2)
@@ -10,13 +10,9 @@ class Game private constructor(private val player1: Player, private val player2:
     private var advantagePlayer: Player? = null
     private var winner: Player? = null
 
-    fun getWinner(): String {
+    fun getWinner(): Player {
         if (winner == null) throw NoWinnerException("No winner.")
-        return "$winner wins."
-    }
-
-    fun getScores(): String {
-        return "${player1.score}, ${player2.score}"
+        return winner!!
     }
 
     // No action when game is finished
@@ -78,9 +74,5 @@ class Game private constructor(private val player1: Player, private val player2:
         return advantagePlayer == null
                 && player1.score == Score.Forty
                 && player2.score == Score.Forty
-    }
-
-    fun getPlayers(): String {
-        return "$player1, $player2"
     }
 }
