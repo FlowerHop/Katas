@@ -1,6 +1,6 @@
 package com.flowerhop.katas
 
-class Player {
+class Player(val name: String) {
     var score: Score = Score.Love
 
     fun wins() {
@@ -10,6 +10,10 @@ class Player {
             Score.Thirty -> Score.Forty
             Score.Forty -> Score.Forty
         }
+    }
+
+    override fun toString(): String {
+        return name
     }
 }
 

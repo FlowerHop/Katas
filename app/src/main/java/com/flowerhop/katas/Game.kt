@@ -1,14 +1,18 @@
 package com.flowerhop.katas
 
-class Game {
-    private val player1 = Player()
-    private val player2 = Player()
+class Game private constructor(private val player1: Player, private val player2: Player) {
+    companion object {
+        fun create(player1: Player, player2: Player): Game {
+            return Game(player1, player2)
+        }
+    }
+
     private var advantagePlayer: Player? = null
     private var winner: Player? = null
 
     fun getWinner(): String {
         if (winner == null) throw NoWinnerException("No winner.")
-        return "Player 1 wins."
+        return "$winner wins."
     }
 
     fun getScores(): String {
@@ -25,7 +29,7 @@ class Game {
         }
 
         // Play 1 is 40
-        if (isDeuce()) {
+        if (isInDeuce()) {
             advantagePlayer = player1
             return
         }
@@ -52,7 +56,7 @@ class Game {
             return
         }
 
-        if (isDeuce()) {
+        if (isInDeuce()) {
             advantagePlayer = player2
             return
         }
@@ -70,9 +74,13 @@ class Game {
         advantagePlayer = null
     }
 
-    private fun isDeuce(): Boolean {
+    fun isInDeuce(): Boolean {
         return advantagePlayer == null
                 && player1.score == Score.Forty
                 && player2.score == Score.Forty
+    }
+
+    fun getPlayers(): String {
+        return "$player1, $player2"
     }
 }
