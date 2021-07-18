@@ -1,4 +1,4 @@
-package com.flowerhop.katas
+package com.flowerhop.katas.tennis.exception
 
 class NoWinnerException : Exception {
     constructor(message: String): super(message)

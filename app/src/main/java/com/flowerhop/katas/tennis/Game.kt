@@ -1,4 +1,6 @@
-package com.flowerhop.katas
+package com.flowerhop.katas.tennis
+
+import com.flowerhop.katas.tennis.exception.NoWinnerException
 
 class Game private constructor(val player1: Player, val player2: Player) {
     companion object {

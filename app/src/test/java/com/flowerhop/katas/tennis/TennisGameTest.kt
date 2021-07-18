@@ -1,5 +1,6 @@
-package com.flowerhop.katas
+package com.flowerhop.katas.tennis
 
+import com.flowerhop.katas.tennis.exception.NoWinnerException
 import org.junit.Assert.*
 import org.junit.Test
 

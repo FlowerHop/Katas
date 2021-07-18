@@ -1,4 +1,4 @@
-package com.flowerhop.katas
+package com.flowerhop.katas.tennis
 
 class Player(val name: String) {
     var score: Score = Score.Love
